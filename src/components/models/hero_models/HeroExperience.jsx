@@ -3,6 +3,9 @@ import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
 
 import { Room } from "./Room";
+import { FemaleSoldier } from "./FemaleSoldier";
+import { SpaceExploration } from "./SpaceExploration";
+import { Space } from "./Space";
 import HeroLights from "./HeroLights";
 import Particles from "./Particles";
 import { Suspense } from "react";
@@ -28,12 +31,32 @@ const HeroExperience = () => {
       <Suspense fallback={null}>
         <HeroLights />
         <Particles count={100} />
+
+        {/* Character */}
         <group
-          scale={isMobile ? 0.7 : 1}
-          position={[0, -3.5, 0]}
-          rotation={[0, -Math.PI / 4, 0]}
+          scale={isMobile ? 0.7 : 0.5}
+          position={[-3.7, -3.8, 0]}
+          rotation={[0.2, -Math.PI / 1, 0.08]}
         >
-          <Room />
+          <FemaleSoldier />
+        </group>
+
+        {/* Rocket */}
+        <group
+          scale={isMobile ? 0.7 : 0.4}
+          position={[4, -3, 5]}
+          rotation={[0, -Math.PI / 0.9, 0.2]}
+        >
+          <SpaceExploration />
+        </group>
+
+        {/* Isolated Galaxy */}
+        <group
+          scale={isMobile ? 0.7 : 55}
+          position={[70, -70, -320]}
+          rotation={[0, Math.PI / 0.9, -0.2]}
+        >
+          <Space />
         </group>
       </Suspense>
     </Canvas>
